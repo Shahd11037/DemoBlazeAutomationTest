@@ -1,26 +1,31 @@
 package com.demoblaze.pages;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.Alert;
 
 import java.time.Duration;
 
 public class BasePage {
 
-    protected WebDriver driver;
-    protected WebDriverWait wait;
-    protected Actions action;
+    public static WebDriver driver;
+    protected static WebDriverWait wait;
+    protected static Actions action;
 
-    public BasePage(WebDriver driver) {
-        this.driver = driver;
+    public static void setDriver(WebDriver driver) {
+        BasePage.driver = driver;
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         action = new Actions(driver);
-
     }
+
+//    public BasePage(WebDriver driver) {
+//        this.driver = driver;
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//        action = new Actions(driver);
+//    }
 
     protected Boolean isElementDisplayed(By locator){
         return wait.until(
@@ -34,7 +39,10 @@ public class BasePage {
     protected void myClick(By locator){
         wait.until(
                 ExpectedConditions.elementToBeClickable(locator)).click();
+    }
 
+    protected String getText(By locator){
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator)).getText();
     }
 
     protected void mySendKeys(By locator, String text) {
@@ -49,4 +57,6 @@ public class BasePage {
         return text;
     }
 
-   }
+
+
+}

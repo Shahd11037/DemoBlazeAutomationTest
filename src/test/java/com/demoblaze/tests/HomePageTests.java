@@ -1,15 +1,17 @@
 package com.demoblaze.tests;
 
 import com.demoblaze.pages.HomePage;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 public class HomePageTests extends BaseTest{
 
 
     @Test(priority = 0)
     public void verifyHomePageLoads(){
-        HomePage homePage = new HomePage(driver);
         soft.assertTrue(homePage.isNavBarDisplayed(),
                 "Navigation bar is not displayed");
         soft.assertTrue(homePage.isProductStoreHeadingDisplayed(),
@@ -18,7 +20,6 @@ public class HomePageTests extends BaseTest{
 
     @Test(priority = 1)
     public void verifyCategoriesLoad(){
-        HomePage homePage = new HomePage(driver);
         soft.assertTrue(homePage.isPhonesCategoryDisplayed(),
                 "phones category is not displayed");
         soft.assertTrue(homePage.isLaptopsCategoryDisplayed(),
@@ -29,7 +30,6 @@ public class HomePageTests extends BaseTest{
 
     @Test(priority = 2)
     public void verifyClickingOnAllCategories(){
-        HomePage homePage = new HomePage(driver);
         //phones category
         homePage.clickOnPhonesCategory();
         soft.assertFalse(homePage.isLaptopProductDisplayed(),
@@ -45,8 +45,13 @@ public class HomePageTests extends BaseTest{
     }
 
 //    @Test(priority = 3)
-//    public void verifyClickingNextAndPrevious(){
-//        HomePage homePage = new HomePage(driver);
+//    public void verifyClickingNextAndPrevious() throws InterruptedException {
+//        HomePage homePage = new HomePage();
+//        soft.assertTrue(homePage.isPhoneProductDisplayed());
+//        homePage.clickNextBtn();
+//        homePage.isMonitorProductDisplayed();
+////        soft.assertTrue(homePage.isMonitorProductDisplayed(),
+////                "We are not in the next page");
 //
 //    }
 

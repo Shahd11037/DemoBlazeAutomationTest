@@ -10,9 +10,6 @@ public class LoginPage extends BasePage {
     private By welcomeUserLocator = By.xpath("//a[@id='nameofuser']");
     private By logoutLinkLocator = By.xpath("//a[@id='logout2']");
 
-    public LoginPage(WebDriver driver) {
-        super(driver);
-    }
 
     //to help assert if the user is logged in
     public boolean isWelcomeUserDisplayed() {

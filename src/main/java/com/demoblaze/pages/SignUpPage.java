@@ -11,9 +11,6 @@ import org.openqa.selenium.WebDriver;
         private By passwordFieldLocator = By.xpath("//input[@id='sign-password']");
         private By signUpButtonLocator = By.xpath("//button[@onclick='register()']");
 
-        public SignUpPage(WebDriver driver) {
-            super(driver);
-        }
 
         //to help assert if the sign up form is visible
         public boolean isUsernameFieldDisplayed() {
